@@ -27,4 +27,6 @@ jobs:
         run: make compile
 
       - name: Dockerize
-        run: make dockerrun
+        run: |
+          make dockerrun
+          make dockerclear

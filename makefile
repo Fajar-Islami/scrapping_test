@@ -10,7 +10,7 @@ composerestart:
 
 dockerrun:
 	docker build . -t oc_be:1.0.0
-	docker run --rm --name oc_be oc_be:1.0.0
+	docker run -d -p 8081:8081 --name oc_be oc_be:1.0.0 
 
 dockerclear:
 	docker stop oc_be
