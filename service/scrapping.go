@@ -2,11 +2,14 @@ package service
 
 import (
 	"context"
+	"fmt"
+	"log"
 	"net/http"
 	"strings"
 	"time"
 
 	"github.com/Fajar-Islami/scrapping_test/model"
+	"github.com/Fajar-Islami/scrapping_test/repository"
 	"github.com/PuerkitoBio/goquery"
 )
 
@@ -18,19 +21,41 @@ type TrackingService interface {
 }
 
 type trackingServiceImpl struct {
-	context context.Context
+	context       context.Context
+	trackingRedis repository.RedisTrackingRepository
 }
 
-func NewTrackingService(context context.Context) TrackingService {
+func NewTrackingService(context context.Context, trackingRedis repository.RedisTrackingRepository) TrackingService {
 	return &trackingServiceImpl{
-		context: context,
+		context:       context,
+		trackingRedis: trackingRedis,
 	}
 }
 
+const basePrefix = "tracking:"
+const timeExpire = 1
+
 func (ts *trackingServiceImpl) GetDataTracking(uri string) (dataTracking model.DataStruct, err error) {
+	timeStr := fmt.Sprint(timeExpire, "m")
+	strKeys := ts.keyWithPrefix("GetDataTracking", timeStr)
+
+	// Check if data already in redis
+	data, err := ts.trackingRedis.GetTrackingByQueryCtx(ts.context, strKeys)
+	if err != nil {
+		log.Println(err)
+	}
+
+	// If data exist
+	if data != nil {
+		dataTracking = *data
+		return dataTracking, nil
+	}
+
+	fmt.Println("Data not exist")
+
 	res, err := http.Get(uri)
 	if err != nil {
-		// log.Fatal(err)
+		log.Println("GetDataTracking err===", err)
 		return
 	}
 
@@ -41,8 +66,6 @@ func (ts *trackingServiceImpl) GetDataTracking(uri string) (dataTracking model.D
 		// log.Fatal(err)
 		return
 	}
-
-	// var dataTracking model.DataStruct
 
 	doc.Find("table:nth-child(4) tbody").Each(func(i int, tablehtml *goquery.Selection) {
 		// Get Data Consignee
@@ -88,5 +111,13 @@ func (ts *trackingServiceImpl) GetDataTracking(uri string) (dataTracking model.D
 		})
 	})
 
+	if err := ts.trackingRedis.SetTrackingCtx(ts.context, strKeys, timeExpire, &dataTracking); err != nil {
+		log.Println(err)
+	}
+
 	return
+}
+
+func (ts *trackingServiceImpl) keyWithPrefix(subprefix, time string) string {
+	return fmt.Sprintf("%s:%s:%s", basePrefix, subprefix, time)
 }

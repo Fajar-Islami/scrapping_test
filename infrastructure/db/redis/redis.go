@@ -3,6 +3,7 @@ package redis
 import (
 	"context"
 	"fmt"
+	"log"
 	"time"
 
 	"github.com/Fajar-Islami/scrapping_test/infrastructure/container"
@@ -29,7 +30,7 @@ func NewRedisClient(cont container.Redis) *redis.Client {
 
 	pong, err := client.Ping(ctx).Result()
 	if err != nil {
-		panic("Failed to create a connection to redis")
+		log.Println("Failed to create a connection to redis")
 	}
 	fmt.Println(pong, err)
 
