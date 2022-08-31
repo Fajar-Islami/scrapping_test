@@ -19,3 +19,7 @@ dockerclear:
 
 gotest:
 	go test -v ./app
+
+push:
+	git push -u origin master
+	git push -u origin --tags
