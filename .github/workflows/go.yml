@@ -1,0 +1,30 @@
+name: app_oc Be
+
+on:
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.18
+
+      - name: Build Environment
+        run: make composerestart
+
+      - name: Golang Test
+        run: make gotest
+
+      - name: Golang Compile
+        run: make compile
+
+      - name: Dockerize
+        run: make dockerrun

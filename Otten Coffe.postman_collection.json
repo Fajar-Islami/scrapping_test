@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "13099748-d663-4e18-842e-3f1e5fc4c0d9",
+		"name": "Otten Coffe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12114597"
+	},
+	"item": [
+		{
+			"name": "Health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{port}}/health",
+					"host": [
+						"{{port}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tracking",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{port}}/api/tracking",
+					"host": [
+						"{{port}}"
+					],
+					"path": [
+						"api",
+						"tracking"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Tracking",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{port}}/api/tracking",
+							"host": [
+								"{{port}}"
+							],
+							"path": [
+								"api",
+								"tracking"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 31 Aug 2022 15:00:57 GMT"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": {\n        \"code\": \"060101\",\n        \"Message\": \"Delivery tracking detail fetched successfully\"\n    },\n    \"data\": {\n        \"receivedBy\": \"PAK MURADI\",\n        \"histories\": [\n            {\n                \"description\": \"DELIVERED TO [PAK MURADI  | 04-02-2021 10:22 | BEKASI ]\",\n                \"createdAt\": \"\",\n                \"formatted\": {\n                    \"createdAt\": \"\"\n                }\n            },\n            {\n                \"description\": \"\",\n                \"createdAt\": \"2021-02-04T10:22:00+07:00\",\n                \"formatted\": {\n                    \"createdAt\": \"04 February 2021, 10:22 WIB\"\n                }\n            },\n            {\n                \"description\": \"WITH DELIVERY COURIER [BEKASI]\",\n                \"createdAt\": \"\",\n                \"formatted\": {\n                    \"createdAt\": \"\"\n                }\n            },\n            {\n                \"description\": \"\",\n                \"createdAt\": \"2021-02-04T08:55:00+07:00\",\n                \"formatted\": {\n                    \"createdAt\": \"04 February 2021, 08:55 WIB\"\n                }\n            },\n            {\n                \"description\": \"RECEIVED AT INBOUND STATION [BEKASI, HUB JATIASIH 4]\",\n                \"createdAt\": \"\",\n                \"formatted\": {\n                    \"createdAt\": \"\"\n                }\n            },\n            {\n                \"description\": \"\",\n                \"createdAt\": \"2021-02-04T08:00:00+07:00\",\n                \"formatted\": {\n                    \"createdAt\": \"04 February 2021, 08:00 WIB\"\n                }\n            },\n            {\n                \"description\": \"SHIPMENT FORWARDED TO DESTINATION [BEKASI, HUB JATIASIH 4]\",\n                \"createdAt\": \"\",\n                \"formatted\": {\n                    \"createdAt\": \"\"\n                }\n            },\n            {\n                \"description\": \"\",\n                \"createdAt\": \"2021-02-04T06:40:00+07:00\",\n                \"formatted\": {\n                    \"createdAt\": \"04 February 2021, 06:40 WIB\"\n                }\n            },\n            {\n                \"description\": \"RECEIVED AT WAREHOUSE [INBOUND BKI1]\",\n                \"createdAt\": \"\",\n                \"formatted\": {\n                    \"createdAt\": \"\"\n                }\n            },\n            {\n                \"description\": \"\",\n                \"createdAt\": \"2021-02-04T02:06:00+07:00\",\n                \"formatted\": {\n                    \"createdAt\": \"04 February 2021, 02:06 WIB\"\n                }\n            },\n            {\n                \"description\": \"RECEIVED AT ORIGIN GATEWAY [JAKARTA]\",\n                \"createdAt\": \"\",\n                \"formatted\": {\n                    \"createdAt\": \"\"\n                }\n            },\n            {\n                \"description\": \"\",\n                \"createdAt\": \"2021-02-04T00:15:00+07:00\",\n                \"formatted\": {\n                    \"createdAt\": \"04 February 2021, 00:15 WIB\"\n                }\n            },\n            {\n                \"description\": \"PROCESSED AT SORTING CENTER [JAKARTA, BANDARA MAS(OUTBOUND)]\",\n                \"createdAt\": \"\",\n                \"formatted\": {\n                    \"createdAt\": \"\"\n                }\n            },\n            {\n                \"description\": \"\",\n                \"createdAt\": \"2021-02-03T22:38:00+07:00\",\n                \"formatted\": {\n                    \"createdAt\": \"03 February 2021, 22:38 WIB\"\n                }\n            },\n            {\n                \"description\": \"RECEIVED AT SORTING CENTER [JAKARTA]\",\n                \"createdAt\": \"\",\n                \"formatted\": {\n                    \"createdAt\": \"\"\n                }\n            },\n            {\n                \"description\": \"\",\n                \"createdAt\": \"2021-02-03T21:44:00+07:00\",\n                \"formatted\": {\n                    \"createdAt\": \"03 February 2021, 21:44 WIB\"\n                }\n            },\n            {\n                \"description\": \"SHIPMENT RECEIVED BY JNE COUNTER OFFICER AT [JAKARTA]\",\n                \"createdAt\": \"\",\n                \"formatted\": {\n                    \"createdAt\": \"\"\n                }\n            },\n            {\n                \"description\": \"\",\n                \"createdAt\": \"2021-02-03T20:26:00+07:00\",\n                \"formatted\": {\n                    \"createdAt\": \"03 February 2021, 20:26 WIB\"\n                }\n            }\n        ]\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "port",
+			"value": "localhost:8081",
+			"type": "string"
+		}
+	]
+}
