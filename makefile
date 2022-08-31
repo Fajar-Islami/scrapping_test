@@ -19,7 +19,3 @@ dockerclear:
 
 gotest:
 	go test -v ./app
-
-# dockerrestart:
-# 	make dockerrun
-# go test -v ./app
